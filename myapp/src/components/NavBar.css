@@ -1,0 +1,22 @@
+.Navigation {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    margin: 0px;
+    padding: 0px;
+}
+
+.Navigation ul {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+}
+
+.Navigation ul li {
+    list-style-type: none;
+    margin: 1rem;
+}
+
+.linkText {
+    color: white !important;
+}
