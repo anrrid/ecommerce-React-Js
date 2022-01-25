@@ -1,5 +1,6 @@
 import "./NavBar.css";
 import { Nav, Container, Navbar } from "react-bootstrap"
+import CartWidget from "./CartWidget";
 
 const NavBar = (props) => {
     return (
@@ -15,6 +16,7 @@ const NavBar = (props) => {
                     <Nav.Link eventKey="link-1" className="linkText">About Us</Nav.Link>
                     <Nav.Link eventKey="link-2" className="linkText">Products</Nav.Link>
                     <Nav.Link eventKey="link-2" className="linkText">Contact</Nav.Link>
+                    <Nav.Link eventKey="link-2" className="linkText"><CartWidget /></Nav.Link>
 
                 </Nav>
             </Container>
