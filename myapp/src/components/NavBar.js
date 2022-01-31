@@ -8,13 +8,13 @@ const NavBar = (props) => {
             <Container>
                 <Navbar.Brand href="#home">My Store</Navbar.Brand>
 
-                <Nav class="Navigation"
+                <Nav className="Navigation"
                     activeKey="/home"
                     onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
                 >
                     <Nav.Link href="/home" className="linkText">Home</Nav.Link>
                     <Nav.Link eventKey="link-1" className="linkText">About Us</Nav.Link>
-                    <Nav.Link eventKey="link-2" className="linkText">Products</Nav.Link>
+                    <Nav.Link href="products.html" className="linkText">Products</Nav.Link>
                     <Nav.Link eventKey="link-2" className="linkText">Contact</Nav.Link>
                     <Nav.Link eventKey="link-2" className="linkText"><CartWidget /></Nav.Link>
 
