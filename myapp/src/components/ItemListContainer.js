@@ -1,7 +1,33 @@
-import "./ItemListContainer.css"
+import React, { useEffect, useState } from 'react';
+import ItemList from "./ItemList";
+import items from "./utils/utils"
 
-function ItemListContainer(props) {
-    return <h3> Welcome {props.greeting} </h3>;
+
+const ItemListContainer = () => {
+
+    const [itemList, setItems] = useState([]);
+
+    useEffect(() => {
+        const promiseItems = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(items)
+            }, 2000)
+        })
+        promiseItems
+            .then((res) => {
+                setItems(res);
+                console.log(itemList);
+            })
+            .catch((error) => {
+                //console.log(error)
+            })
+    }, [itemList]);
+
+    return (
+        <>
+            <ItemList items={itemList} />
+        </>
+    )
 }
 
 export default ItemListContainer;

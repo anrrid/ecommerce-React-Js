@@ -7,7 +7,6 @@ const NavBar = (props) => {
         <Navbar bg="dark" variant="dark" >
             <Container>
                 <Navbar.Brand href="#home">My Store</Navbar.Brand>
-
                 <Nav className="Navigation"
                     activeKey="/home"
                     onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
