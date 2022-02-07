@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import ItemList from "./ItemList";
+import ItemDetail from "./ItemDetail"
 import items from "./utils/utils"
 
 
-const ItemListContainer = () => {
-    const [itemList, setItems] = useState([]);
+const ItemDetailContainer = () => {
+
+    const [ItemDetail, setItemDetail] = useState([]);
     const [loading, setLoading] = useState(true);
-
-
     useEffect(() => {
         const promiseItems = new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -16,8 +15,8 @@ const ItemListContainer = () => {
         })
         promiseItems
             .then((res) => {
-                setItems(res);
-                console.log(itemList);
+                setItemDetail(res);
+                console.log(ItemDetail);
             })
             .catch((error) => {
                 console.log(error)
@@ -25,11 +24,11 @@ const ItemListContainer = () => {
             .finally(() => {
                 setLoading(false);
             })
-    }, [itemList]);
+    }, [ItemDetail]);
     return (
         <>
-            {loading ? <h1> loading... </h1> : <ItemList items={itemList} />}
+            {loading ? <h1> loading detail... </h1> : <ItemDetail />}
         </>
     )
 }
-export default ItemListContainer;
+export default ItemDetailContainer;
