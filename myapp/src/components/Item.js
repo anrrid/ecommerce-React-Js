@@ -36,9 +36,9 @@ const Item = (props) => {
 
                     <div> <Button className="btnStyle" variant="primary" onClick={() => handleClick()}>Detalle</Button></div>
                     {render &&
-                        <div>
-                            <ItemDetail itemToItemDetail={data} />
-                        </div>
+
+                        <ItemDetail itemToItemDetail={data} />
+
                     }
 
                 </Card.Body>
