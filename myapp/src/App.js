@@ -2,8 +2,7 @@ import "./App.css"
 
 import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
-//import ItemDetailContainer from "./components/ItemDetailContainer";
-
+import ItemDetailContainer from "./components/ItemDetailContainer";
 
 const App = () => {
     return (
@@ -11,6 +10,7 @@ const App = () => {
             <NavBar />
             <div className="countSection">
                 <ItemListContainer />
+                {/* <ItemDetailContainer /> */}
             </div>
         </>
     )

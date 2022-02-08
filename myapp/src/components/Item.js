@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./Item.css"
-import ItemDetail from "./ItemDetail"
 
 //CARD
 import Card from 'react-bootstrap/Card'
 import { Button } from "react-bootstrap";
+import ItemDetailContainer from "./ItemDetailContainer";
 
 
 const Item = (props) => {
@@ -12,7 +12,7 @@ const Item = (props) => {
     const [data, setData] = useState('');
 
     const itemToItemDetail = () => {
-        setData("prueba")
+        setData(props)
     }
 
     return (
@@ -31,12 +31,12 @@ const Item = (props) => {
                     <div> <Button className="btnStyle" variant="primary" onClick={() => itemToItemDetail()}>Detalle</Button></div>
 
                     <div>
-                        <ItemDetail itemToItemDetail={data} />
+                        <ItemDetailContainer itemToItemDetail={data} />
                     </div>
                 </Card.Body>
-            </Card>
+            </Card>;
         </div>
-    );
+    )
 }
 
 

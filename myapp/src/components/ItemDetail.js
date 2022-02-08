@@ -3,11 +3,16 @@ import React, { useState } from 'react';
 
 
 const ItemDetail = ({ itemToItemDetail }) => {
-    const [itemdetail, setitemdetail] = useState([]);
+    const [itemdetail, setitemdetail] = useState();
+
+
+    const setDetails = () => {
+        setitemdetail(itemToItemDetail)
+    }
 
     return (
         <div>
-            {itemToItemDetail}
+            <p>{itemToItemDetail.price}</p>
         </div>
     );
 }
