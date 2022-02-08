@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./Item.css"
+import ItemDetail from "./ItemDetail"
 
 //CARD
 import Card from 'react-bootstrap/Card'
 import { Button } from "react-bootstrap";
-import ItemDetailContainer from "./ItemDetailContainer";
 
 
 const Item = (props) => {
@@ -15,6 +15,12 @@ const Item = (props) => {
         setData(props)
     }
 
+    const [render, setRender] = useState(false)
+
+    const handleClick = () => {
+        itemToItemDetail()
+        setRender(render => !render);
+    }
     return (
         <div className='ItemCard'>
             <Card border="dark" style={{ width: '18rem' }}>
@@ -28,13 +34,15 @@ const Item = (props) => {
 
                     <Card.Text className="stockStyle"> <p>Cantidad disponible: {props.stock}</p> </Card.Text>
 
-                    <div> <Button className="btnStyle" variant="primary" onClick={() => itemToItemDetail()}>Detalle</Button></div>
+                    <div> <Button className="btnStyle" variant="primary" onClick={() => handleClick()}>Detalle</Button></div>
+                    {render &&
+                        <div>
+                            <ItemDetail itemToItemDetail={data} />
+                        </div>
+                    }
 
-                    <div>
-                        <ItemDetailContainer itemToItemDetail={data} />
-                    </div>
                 </Card.Body>
-            </Card>;
+            </Card>
         </div>
     )
 }
