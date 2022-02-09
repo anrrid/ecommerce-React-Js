@@ -1,19 +1,27 @@
 
 // REACT ROUTER DOM
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+
 
 // COMPONENTS
 import NavBar from "./components/NavBar";
-// import ItemListContainer from "./components/ItemListContainer";
-// import ItemDetailContainer from "./components/ItemDetailContainer";
+
 
 // VIEWS
 import Home from './views/Home/Home';
 import About from './views/About/About';
 import Contact from './views/Contact/Contact';
-import ItemDetailContainer from '../src/components/ItemDetailContainer';
+import ItemDetail from '../src/components/ItemDetail';
 
-const App = () => {
+const App = (props) => {
+
+    const [data, setData] = useState('');
+
+    const itemToItemDetail = () => {
+        setData(props)
+    }
+
     return (
         <Router>
             <div>
@@ -22,7 +30,7 @@ const App = () => {
                     <Route path='/' element={<Home />} />
                     <Route path='/about' element={<About />} />
                     <Route path='/contact' element={<Contact />} />
-                    <Route path='/detail/:itemToItemDetail' element={<ItemDetailContainer />} />
+                    <Route path='/detail/:ItemDetail' element={<ItemDetail itemToItemDetail={data} />} />
                 </Routes>
             </div>
         </Router>

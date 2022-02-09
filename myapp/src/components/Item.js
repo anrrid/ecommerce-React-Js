@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./Item.css"
-import ItemDetail from "./ItemDetail"
+import ItemDetailContainer from "./ItemDetail"
+import { Link } from 'react-router-dom';
 
 //CARD
 import Card from 'react-bootstrap/Card'
-import { Button } from "react-bootstrap";
 
 
 const Item = (props) => {
@@ -17,10 +17,10 @@ const Item = (props) => {
 
     const [render, setRender] = useState(false)
 
-    const handleClick = () => {
-        itemToItemDetail()
-        setRender(render => !render);
-    }
+    // const handleClick = () => {
+    //     itemToItemDetail()
+    //     setRender(render => !render);
+    // }
     return (
         <div className='ItemCard'>
             <Card border="dark" style={{ width: '18rem' }}>
@@ -34,10 +34,10 @@ const Item = (props) => {
 
                     <Card.Text className="stockStyle"> <p>Cantidad disponible: {props.stock}</p> </Card.Text>
 
-                    <div> <Button className="btnStyle" variant="primary" onClick={() => handleClick()}>Detalle</Button></div>
+                    <div> <Link to="/detail/" className="btnStyle" variant="primary">Detalle</Link></div>
                     {render &&
 
-                        <ItemDetail itemToItemDetail={data} />
+                        <ItemDetailContainer itemToItemDetail={data} />
 
                     }
 
