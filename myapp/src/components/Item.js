@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./Item.css"
-import ItemDetailContainer from "./ItemDetail"
+// import ItemDetailContainer from "./ItemDetail"
 import { Link } from 'react-router-dom';
+import items from "./utils/utils"
 
 //CARD
 import Card from 'react-bootstrap/Card'
@@ -15,12 +16,7 @@ const Item = (props) => {
         setData(props)
     }
 
-    const [render, setRender] = useState(false)
 
-    // const handleClick = () => {
-    //     itemToItemDetail()
-    //     setRender(render => !render);
-    // }
     return (
         <div className='ItemCard'>
             <Card border="dark" style={{ width: '18rem' }}>
@@ -34,12 +30,7 @@ const Item = (props) => {
 
                     <Card.Text className="stockStyle"> <p>Cantidad disponible: {props.stock}</p> </Card.Text>
 
-                    <div> <Link to="/detail/" className="btnStyle" variant="primary">Detalle</Link></div>
-                    {render &&
-
-                        <ItemDetailContainer itemToItemDetail={data} />
-
-                    }
+                    <div> <Link to={`/detail/${items.article}`} className="btnStyle" variant="primary">Detalle</Link></div>
 
                 </Card.Body>
             </Card>

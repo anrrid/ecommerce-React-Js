@@ -30,7 +30,7 @@ const ItemDetailContainer = ({ itemToItemDetail }) => {
     }, [ItemDetail]);
     return (
         <>
-            {loading ? <h1> loading detail... </h1> : <ItemDetail itemToItemDetail={itemToItemDetail} />}
+            {loading ? <h1> loading detail... </h1> : <ItemDetail itemToItemDetail={ItemDetail} />}
         </>
     )
 }
