@@ -1,32 +1,37 @@
-import React, { useState } from 'react';
-import Card from 'react-bootstrap/Card'
+import React, { useState } from "react";
+import Card from "react-bootstrap/Card";
+import { useParams } from "react-router-dom";
+
+import items from "./utils/utils";
 
 const ItemDetail = ({ itemToItemDetail }) => {
-    const [itemdetail, setitemdetail] = useState();
+  const { itemId } = useParams();
 
+  const item = items.find((item) => item.id == itemId);
 
-    const setDetails = () => {
-        setitemdetail(itemToItemDetail)
-    }
+  const [itemdetail, setitemdetail] = useState();
 
-    return (
-        <div className='ItemCard'>
-            <Card border="dark" style={{ width: '18rem' }}>
+  const setDetails = () => {
+    setitemdetail(itemToItemDetail);
+  };
 
-                <Card.Header>{itemToItemDetail.article}</Card.Header>
-                <Card.Body>
+  return (
+    <div className="ItemCard">
+      <Card border="dark" style={{ width: "18rem" }}>
+        <Card.Header>{item.article}</Card.Header>
+        <Card.Body>
+          <Card.Img variant="top" src={item.imageUrl} />
 
-                    <Card.Img variant="top" src={itemToItemDetail.imageUrl} />
+          <Card.Text className="priceStyle"> $ {item.price} </Card.Text>
 
-                    <Card.Text className="priceStyle"> $ {itemToItemDetail.price} </Card.Text>
-
-                    <Card.Text className="stockStyle"> <p>Cantidad disponible: {itemToItemDetail.stock}</p> </Card.Text>
-
-                </Card.Body>
-            </Card>
-        </div>
-    );
-}
-
+          <Card.Text className="stockStyle">
+            {" "}
+            <p>Cantidad disponible: {item.stock}</p>{" "}
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    </div>
+  );
+};
 
 export default ItemDetail;
