@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import { useParams } from "react-router-dom";
+import ItemCount from "./ItemCount"
 
 import items from "./utils/utils";
 
@@ -28,6 +29,7 @@ const ItemDetail = ({ itemToItemDetail }) => {
             {" "}
             <p>Cantidad disponible: {item.stock}</p>{" "}
           </Card.Text>
+          <ItemCount />
         </Card.Body>
       </Card>
     </div>
