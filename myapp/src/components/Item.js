@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 //CARD
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button"
 
 const Item = (props) => {
   const [data, setData] = useState("");
@@ -33,8 +34,7 @@ const Item = (props) => {
               to={`/detail/${props.id}`}
               className="btnStyle"
               variant="primary"
-            >
-              Detalle
+            > <Button style={{ width: '16rem' }}>Detalle</Button>
             </Link>
           </div>
         </Card.Body>
