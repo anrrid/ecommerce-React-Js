@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import { useParams } from "react-router-dom";
 import ItemCount from "./ItemCount"
 
+
 import items from "./utils/utils";
 
 const ItemDetail = ({ itemToItemDetail }) => {
@@ -12,13 +13,13 @@ const ItemDetail = ({ itemToItemDetail }) => {
 
   const [itemdetail, setitemdetail] = useState();
 
-  const setDetails = () => {
-    setitemdetail(itemToItemDetail);
-  };
+  // const setDetails = () => {
+  //   setitemdetail(itemToItemDetail);
+  // };
 
   return (
     <div className="ItemCard">
-      <Card border="dark" style={{ width: "18rem" }}>
+      <Card border="dark" style={{ width: "25rem" }}>
         <Card.Header>{item.article}</Card.Header>
         <Card.Body>
           <Card.Img variant="top" src={item.imageUrl} />
@@ -27,8 +28,9 @@ const ItemDetail = ({ itemToItemDetail }) => {
 
           <Card.Text className="stockStyle">
             {" "}
-            <p>Cantidad disponible: {item.stock}</p>{" "}
+            <p>available quantity  {item.stock}</p>{" "}
           </Card.Text>
+          <Card.Text><p>{item.description}</p></Card.Text>
           <ItemCount />
         </Card.Body>
       </Card>
