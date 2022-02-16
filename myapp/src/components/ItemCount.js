@@ -9,17 +9,12 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import { Link } from "react-router-dom";
 
-const ItemCount = (props) => {
+const ItemCount = () => {
     const { itemId } = useParams();
-    // const { totalStock } = useParams();
 
     const item = items.find((item) => item.id == itemId);
-    // const stock = items.filter((item) => item.stock == totalStock)
 
     const [counter, setCounter] = useState(1);
-    // const [stock, setStock] = useState(props.stock);
-    console.log(itemId)
-    console.log(item.stock)
 
     const handlerCounterUp = () => {
         if (counter < item.stock) {
@@ -35,6 +30,8 @@ const ItemCount = (props) => {
         }
     }
 
+    console.log(item)
+
     return (
         <div className='App-Counter'>
             <Card border="dark" style={{ width: '18rem' }}>
@@ -48,7 +45,7 @@ const ItemCount = (props) => {
                         <Button variant="dark" onClick={handlerCounterUp} >+</Button>
                     </Card.Text>
                     <Link to={`/cart/${counter}`}>
-                        <Button variant="primary" style={{ width: '16rem' }} >Buy!</Button>
+                        <Button variant="primary" style={{ width: '16rem' }} >Add!</Button>
                     </Link>
                 </Card.Body>
             </Card>

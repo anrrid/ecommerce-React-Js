@@ -6,16 +6,10 @@ import ItemCount from "./ItemCount"
 
 import items from "./utils/utils";
 
-const ItemDetail = ({ itemToItemDetail }) => {
+const ItemDetail = ({ }) => {
   const { itemId } = useParams();
 
   const item = items.find((item) => item.id == itemId);
-
-  const [itemdetail, setitemdetail] = useState();
-
-  // const setDetails = () => {
-  //   setitemdetail(itemToItemDetail);
-  // };
 
   return (
     <div className="ItemCard">
