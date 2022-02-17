@@ -1,33 +1,29 @@
-import { useContext } from "react";
-import { Card } from "react-bootstrap";
-import { ItemsContext } from "./ItemsContext";
-import { Products } from "./Products";
+import React from 'react';
+import { Card } from 'react-bootstrap';
+import { useListContext } from '../context/CartContext';
 
+export default function Cart() {
+    const { list, counter, clean } = useListContext();
 
-export const Cart = () => {
-    const { items, addItems } = useContext(ItemsContext);
-
-    const data = useContext(ItemsContext);
-
-    return (
+    return <>
         <div>
             <Card border="dark" style={{ width: "55rem", margin: "3rem" }}>
-                <Card.Header>Cart</Card.Header>
+                <Card.Header>Your shopping</Card.Header>
                 <Card.Body>
-                    {items.map((item, index) => {
-                        return (
-                            <Products
-                                key={index}
-                                item={item}
-                                addItems={addItems}
-                            />
-                        )
-                    })}
+                    <Card.Text>
+                        <ul>{list.map((item, index) =>
+                            <li key={item.index}>
+                                <strong>{item.name}</strong>
+                                <span >Valor por unidad = $ {item.price}</span>
+                                <strong >Cantidad: {item.count}</strong>
+                                <strong >Total: $ {item.price * item.count}</strong>
+                            </li>)}
+                        </ul>
+                    </Card.Text>
+
                 </Card.Body>
             </Card>
         </div>
+    </>
 
-    )
 }
-
-export default Cart;

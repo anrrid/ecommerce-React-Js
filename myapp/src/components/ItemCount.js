@@ -1,51 +1,54 @@
-import React, { useState } from "react";
+import React from 'react';
+import { useListContext } from '../context/CartContext';
 import "./ItemCount.css"
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
-import items from "./utils/utils";
+// import items from "./utils/utils";
 
 //components
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import { Link } from "react-router-dom";
 
-const ItemCount = () => {
-    const { itemId } = useParams();
+const ItemCount = ({ onAdd }) => {
 
-    const item = items.find((item) => item.id == itemId);
+    const { handlerCounterUp, handlerCountDown, counter, onCountChange } = useListContext();
 
-    const [counter, setCounter] = useState(1);
+    // const { itemId } = useParams();
 
-    const handlerCounterUp = () => {
-        if (counter < item.stock) {
-            setCounter(counter + 1);
-        }
+    // const item = items.find((item) => item.id == itemId);
 
-    }
+    // const [counter, setCounter] = useState(1);
+
+    // const handlerCounterUp = () => {
+    //     if (counter < item.stock) {
+    //         setCounter(counter + 1);
+    //     }
+
+    // }
 
 
-    const handlerCountDown = () => {
-        if (counter > 0) {
-            setCounter(counter - 1);
-        }
-    }
-
-    console.log(item)
+    // const handlerCountDown = () => {
+    //     if (counter > 0) {
+    //         setCounter(counter - 1);
+    //     }
+    // }
 
     return (
         <div className='App-Counter'>
             <Card border="dark" style={{ width: '18rem' }}>
                 <Card.Header>Build a cart</Card.Header>
                 <Card.Body>
-                    <Card.Title>Item</Card.Title>
-                    <Card.Text> <p>available quantity  {item.stock}</p> </Card.Text>
+                    <Card.Title>Quantity</Card.Title>
+                    {/* <Card.Text> <p>available quantity  {item.stock}</p> </Card.Text> */}
+                    <Card.Text> <h3 value={counter} onChange={onCountChange}>{counter}</h3></Card.Text>
                     <Card.Text className="btnCounter">
-                        <Button variant="dark" onClick={handlerCountDown} >-</Button>
+                        <Button variant="dark" onClick={handlerCountDown}>-</Button>
                         <p>{counter}</p>
                         <Button variant="dark" onClick={handlerCounterUp} >+</Button>
                     </Card.Text>
                     <Link to={`/cart/${counter}`}>
-                        <Button variant="primary" style={{ width: '16rem' }} >Add!</Button>
+                        <Button variant="primary" style={{ width: '16rem' }} conClick={onAdd}>Add {counter}!</Button>
                     </Link>
                 </Card.Body>
             </Card>

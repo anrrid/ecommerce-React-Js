@@ -6,7 +6,8 @@ import ItemCount from "./ItemCount"
 
 import items from "./utils/utils";
 
-const ItemDetail = ({ }) => {
+const ItemDetail = ({ id, name, price }) => {
+  const { addItem, counter } = useListContext();
   const { itemId } = useParams();
 
   const item = items.find((item) => item.id == itemId);
@@ -25,7 +26,7 @@ const ItemDetail = ({ }) => {
             <p>available quantity  {item.stock}</p>{" "}
           </Card.Text>
           <Card.Text><p>{item.description}</p></Card.Text>
-          <ItemCount />
+          <ItemCount onAdd={() => addItem({ id: id, name: name, price: price, count: count })} />
         </Card.Body>
       </Card>
     </div>
