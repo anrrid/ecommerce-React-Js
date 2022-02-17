@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
-import { MainApp } from "./MainApp";
+import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -9,7 +9,7 @@ const rootElement = document.getElementById("root");
 
 ReactDOM.render(
     <StrictMode>
-        <MainApp />
+        <App />
     </StrictMode>,
     rootElement
 );
