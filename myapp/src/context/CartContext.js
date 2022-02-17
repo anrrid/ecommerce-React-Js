@@ -1,40 +1,43 @@
-import React, { useContext, useState } from "react"
+import { createContext, useState } from "react"
 
-export const CartContext = React.createContext([]);
+export const CartContext = createContext();
 
-export const useListContext = () => useContext(CartContext);
-export function ListProvider({ value, initial, min, max, children }) {
+export const { Provider, Consumer } = CartContext;
 
-    const [list, setList] = useState(value || []);
-    const [counter, setCounter] = useState(initial);
 
-    const handlerCounterUp = () => {
-        if (counter < max) {
-            setCounter(counter + 1);
-        }
+// export const useListContext = () => useContext(CartContext);
+export function ListProvider({ children }) {
+
+    const [cart, setCart] = useState([]);
+
+
+    // const isInCart = (id) => {
+    //     // aca va la logica de ver si el prod esta en el carrito  o no y en tal caso retornar true o false    
+    //     //return cart.findIndex(item => item.id === id) !== -1;
+    // }
+
+    const addToCart = (accountant, item) => {
+        console.log("soy addToCart");
+        console.log(accountant, item);
+        setCart([...cart, { accountant: accountant, item: item }]);
+    }
+
+    const removeFromCart = () => {
+    }
+
+    const emptyCart = () => {
+        setCart([]);
+    }
+
+    const valueOfContext = {
+        cart: cart,
+        addToCart: addToCart,
+        removeFromCart: removeFromCart,
+        emptyCart: emptyCart
 
     }
 
-    const handlerCountDown = () => {
-        if (counter > min) {
-            setCounter(counter - 1);
-        }
-    }
-
-    function onCountChange(event) {
-        setCounter(event.target.value)
-    }
-
-    function addItem(newItem) {
-        const itemList = [...list, newItem];
-        setList(itemList);
-    };
-
-    function clean() {
-        setList([]);
-    }
-
-    return <CartContext.Provider value={{ list, handlerCounterUp, handlerCountDown, counter, onCountChange, addItem, quantity: list.length, clean }}>
+    return <CartContext.Provider value={{ valueOfContext }}>
         {children}
     </CartContext.Provider>
 } 

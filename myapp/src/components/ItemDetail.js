@@ -1,16 +1,32 @@
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
-import { useParams } from "react-router-dom";
+import Button from "react-bootstrap/esm/Button";
 import ItemCount from "./ItemCount"
+import { CartContext } from "../context/CartContext"
+import { useContext } from "react";
+import { NavLink } from "react-router-dom";
 
 
-import items from "./utils/utils";
+const ItemDetail = ({ item }) => {
 
-const ItemDetail = ({ id, name, price }) => {
-  const { addItem, counter } = useListContext();
-  const { itemId } = useParams();
 
-  const item = items.find((item) => item.id == itemId);
+  const { addToCart } = useContext(CartContext);
+
+  const [confirm, setConfirm] = useState(false);
+  const [amount, setAmount] = useState(0);
+
+
+  const onAdd = (accountant) => {
+
+    addToCart(accountant, item);
+    alert('Item to cart: ' + accountant);
+    setAmount(accountant)
+    setConfirm(true);
+  };
+
+  const onAddFail = () => {
+    alert('Not enough stock')
+  };
 
   return (
     <div className="ItemCard">
@@ -26,7 +42,7 @@ const ItemDetail = ({ id, name, price }) => {
             <p>available quantity  {item.stock}</p>{" "}
           </Card.Text>
           <Card.Text><p>{item.description}</p></Card.Text>
-          <ItemCount onAdd={() => addItem({ id: id, name: name, price: price, count: count })} />
+          {confirm ? <NavLink to="/carrito"><Button>Terminar compra</Button></NavLink> : <ItemCount stock={10} initial={1} onAdd={onAdd} addFail={onAddFail} />}
         </Card.Body>
       </Card>
     </div>

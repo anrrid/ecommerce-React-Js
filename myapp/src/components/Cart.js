@@ -1,12 +1,16 @@
-import React from 'react';
-import { Card } from 'react-bootstrap';
-import { useListContext } from '../context/CartContext';
+import React, { useContext } from 'react';
+// import { Card } from 'react-bootstrap';
+
 
 export default function Cart() {
-    const { list, counter, clean } = useListContext();
+    // const { list, counter, clean } = useListContext();
+
+    // const resultado = useContext(useListContext)
+
+
 
     return <>
-        <div>
+        {/* <div>
             <Card border="dark" style={{ width: "55rem", margin: "3rem" }}>
                 <Card.Header>Your shopping</Card.Header>
                 <Card.Body>
@@ -23,7 +27,7 @@ export default function Cart() {
 
                 </Card.Body>
             </Card>
-        </div>
+        </div> */}
     </>
 
 }
