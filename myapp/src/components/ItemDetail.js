@@ -4,7 +4,7 @@ import Button from "react-bootstrap/esm/Button";
 import ItemCount from "./ItemCount"
 import { CartContext } from "../context/CartContext"
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const ItemDetail = ({ item }) => {
@@ -39,13 +39,17 @@ const ItemDetail = ({ item }) => {
 
           <Card.Text className="stockStyle">
             {" "}
-            <p>available quantity  {item.stock}</p>{" "}
+            <p>available quantity  {10}</p>{" "}
           </Card.Text>
           <Card.Text><p>{item.description}</p></Card.Text>
-          {confirm ? <NavLink to="/carrito"><Button>Terminar compra</Button></NavLink> : <ItemCount stock={10} initial={1} onAdd={onAdd} addFail={onAddFail} />}
+          {confirm ? <Link
+            to={"/cart"}
+          > <Button style={{ width: '16rem' }}>Finish</Button>
+          </Link> : <ItemCount stock={10} initial={1} onAdd={onAdd} addFail={onAddFail} />}
         </Card.Body>
       </Card>
     </div>
+
   );
 };
 

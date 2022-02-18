@@ -37,7 +37,7 @@ export function ListProvider({ children }) {
 
     }
 
-    return <CartContext.Provider value={{ valueOfContext }}>
+    return <Provider value={valueOfContext}>
         {children}
-    </CartContext.Provider>
+    </Provider>
 } 

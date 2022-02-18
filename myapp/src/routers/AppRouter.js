@@ -11,10 +11,8 @@ export const AppRouter = () => {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
-        <Route
-          path="/detail/:itemId"
-          element={<ItemDetailContainer />} />
-        <Route path="/cart/:amount" element={<Cart />} />
+        <Route path="/detail/:itemId" element={<ItemDetailContainer />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </Router>
   );

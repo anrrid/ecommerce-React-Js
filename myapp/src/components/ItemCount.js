@@ -1,20 +1,10 @@
 import { useState } from 'react';
 import "./ItemCount.css"
-// import { useParams } from "react-router-dom";
-
-// import items from "./utils/utils";
-
-//components
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const ItemCount = ({ stock, initial, onAdd, addFail }) => {
-
-
-    // const { itemId } = useParams();
-
-    // const item = items.find((item) => item.id == itemId);
 
     const [counter, setCounter] = useState(initial);
 
@@ -54,9 +44,9 @@ const ItemCount = ({ stock, initial, onAdd, addFail }) => {
                         <p>{counter}</p>
                         <Button variant="dark" onClick={handlerCounterUp} >+</Button>
                     </Card.Text>
-                    <Link to={`/cart/${counter}`}>
-                        <Button variant="primary" style={{ width: '16rem' }} conClick={AddCart}>Add!</Button>
-                    </Link>
+                    <Card.Text>
+                        <Button style={{ width: '16rem' }} onClick={AddCart}>Add</Button>
+                    </Card.Text>
                 </Card.Body>
             </Card>
         </div>
