@@ -8,10 +8,6 @@ const ItemList = (props) => {
     <div key={item.id}>
       <Item
         {...item}
-        // article={item.article}
-        // price={item.price}
-        // stock={item.stock}
-        // imageUrl={item.imageUrl}
       />
     </div>
   ));

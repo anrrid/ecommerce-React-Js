@@ -1,6 +1,19 @@
+import { useContexto } from "../context/CartContext";
 
-const cart = () => {
-    return (<p>this cart</p>);
+
+
+
+const Cart = () => {
+    const { cart, removeFromCart, emptyCart } = useContexto();
+    console.log(cart, removeFromCart, emptyCart);
+
+    return (
+        <div>
+            <h1>Carrito</h1>
+            {/* {cart.length > 0 ? } */}
+            {/* hacer un map */}
+        </div>
+    )
 }
 
-export default cart
+export default Cart

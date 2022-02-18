@@ -1,21 +1,33 @@
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
-import { useParams } from "react-router-dom";
+import Button from "react-bootstrap/esm/Button";
 import ItemCount from "./ItemCount"
+import { CartContext } from "../context/CartContext"
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { useContexto } from "../context/CartContext";
 
 
-import items from "./utils/utils";
+const ItemDetail = ({ item }) => {
 
-const ItemDetail = ({ itemToItemDetail }) => {
-  const { itemId } = useParams();
 
-  const item = items.find((item) => item.id == itemId);
+  const { addToCart } = useContexto();
 
-  const [itemdetail, setitemdetail] = useState();
+  const [confirm, setConfirm] = useState(false);
+  const [amount, setAmount] = useState(0);
 
-  // const setDetails = () => {
-  //   setitemdetail(itemToItemDetail);
-  // };
+
+  const onAdd = (accountant) => {
+
+    addToCart(accountant, item);
+    alert('Item to cart: ' + accountant);
+    setAmount(accountant)
+    setConfirm(true);
+  };
+
+  const onAddFail = () => {
+    alert('Not enough stock')
+  };
 
   return (
     <div className="ItemCard">
@@ -28,13 +40,17 @@ const ItemDetail = ({ itemToItemDetail }) => {
 
           <Card.Text className="stockStyle">
             {" "}
-            <p>available quantity  {item.stock}</p>{" "}
+            <p>available quantity  {10}</p>{" "}
           </Card.Text>
           <Card.Text><p>{item.description}</p></Card.Text>
-          <ItemCount />
+          {confirm ? <Link
+            to={"/cart"}
+          > <Button style={{ width: '16rem' }}>Finish</Button>
+          </Link> : <ItemCount stock={10} initial={1} onAdd={onAdd} addFail={onAddFail} />}
         </Card.Body>
       </Card>
     </div>
+
   );
 };
 
