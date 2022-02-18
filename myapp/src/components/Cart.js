@@ -1,15 +1,16 @@
-import { useContext } from "react"
-import { CartContext } from "../context/CartContext"
+import { useContexto } from "../context/CartContext";
+
 
 
 
 const Cart = () => {
-    const resultado = useContext(CartContext);
-    console.log(resultado);
+    const { cart, removeFromCart, emptyCart } = useContexto();
+    console.log(cart, removeFromCart, emptyCart);
 
     return (
         <div>
             <h1>Carrito</h1>
+            {/* {cart.length > 0 ? } */}
             {/* hacer un map */}
         </div>
     )

@@ -5,12 +5,13 @@ import ItemCount from "./ItemCount"
 import { CartContext } from "../context/CartContext"
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useContexto } from "../context/CartContext";
 
 
 const ItemDetail = ({ item }) => {
 
 
-  const { addToCart } = useContext(CartContext);
+  const { addToCart } = useContexto();
 
   const [confirm, setConfirm] = useState(false);
   const [amount, setAmount] = useState(0);

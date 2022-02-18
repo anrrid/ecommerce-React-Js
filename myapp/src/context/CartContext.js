@@ -1,43 +1,66 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useContext } from "react"
 
 export const CartContext = createContext();
 
 export const { Provider, Consumer } = CartContext;
 
+export const useContexto = () => {
+    return useContext(CartContext)
+}
 
-// export const useListContext = () => useContext(CartContext);
+
 export function ListProvider({ children }) {
 
-    const [cart, setCart] = useState([]);
+    const [amount, setAmount] = useState([]);
+    const [cart, setCart] = useState(0);
 
-
-    // const isInCart = (id) => {
-    //     // aca va la logica de ver si el prod esta en el carrito  o no y en tal caso retornar true o false    
-    //     //return cart.findIndex(item => item.id === id) !== -1;
-    // }
 
     const addToCart = (accountant, item) => {
         console.log("soy addToCart");
         console.log(accountant, item);
-        setCart([...cart, { accountant: accountant, item: item }]);
+
+        if (isInCart()) {
+            console.log("ya esta en el carrito");
+            const newCart = cart.map(prod => {
+                if (prod.id === item.id) {
+                    prod.amount += accountant;
+                }
+                return prod;
+            })
+            setCart(newCart);
+        } else {
+            console.log("no esta en el carrito");
+            setCart([...cart, { ...item, amount: accountant }]);
+        }
+        setAmount(accountant)
+
     }
 
-    const removeFromCart = () => {
-    }
+    const isInCart = (item) => {
+        const result = cart.find(prod => prod.id === item.id);
+        return result !== undefined;
+    };
+
+    const removeFromCart = (id) => {
+        const filterCart = cart.filter = (item) => {
+            return (item.id !== id)
+        }
+    };
 
     const emptyCart = () => {
         setCart([]);
-    }
+    };
 
     const valueOfContext = {
         cart: cart,
         addToCart: addToCart,
+        isInCart: isInCart,
         removeFromCart: removeFromCart,
         emptyCart: emptyCart
 
-    }
+    };
 
-    return <Provider value={valueOfContext}>
+    return (<Provider value={valueOfContext}>
         {children}
-    </Provider>
+    </Provider>);
 } 
