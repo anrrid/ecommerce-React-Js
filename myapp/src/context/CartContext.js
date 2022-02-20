@@ -1,66 +1,72 @@
-import { createContext, useState, useContext } from "react"
+import { createContext, useContext, useState } from 'react';
 
-export const CartContext = createContext();
+const contexto = createContext();
 
-export const { Provider, Consumer } = CartContext;
+const { Provider } = contexto;
 
 export const useContexto = () => {
-    return useContext(CartContext)
+    return useContext(contexto);
 }
 
 
-export function ListProvider({ children }) {
+const CustomProvider = ({ children }) => {
 
-    const [amount, setAmount] = useState([]);
-    const [cart, setCart] = useState(0);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [totalAmount, setTotalAmount] = useState(0)
+    const [cart, setCart] = useState([]);
+
+    const addToCart = (amount, product) => {
+        console.log("soy el provider")
 
 
-    const addToCart = (accountant, item) => {
-        console.log("soy addToCart");
-        console.log(accountant, item);
 
-        if (isInCart()) {
-            console.log("ya esta en el carrito");
-            const newCart = cart.map(prod => {
-                if (prod.id === item.id) {
-                    prod.amount += accountant;
-                }
-                return prod;
-            })
-            setCart(newCart);
-        } else {
-            console.log("no esta en el carrito");
-            setCart([...cart, { ...item, amount: accountant }]);
-        }
-        setAmount(accountant)
+        const copyProduct = { ...product }
+        copyProduct.amount = amount;
+
+        const copyCart = [...cart, copyProduct]
+        setCart(copyCart)
+
+        const copyTotalAmount = totalAmount + amount;
+        setTotalAmount(copyTotalAmount)
+    }
+
+
+    const deleteProduct = (id) => {
+        const copyCart = cart.filter(product => product.id !== id)
+        setCart(copyCart)
 
     }
 
-    const isInCart = (item) => {
-        const result = cart.find(prod => prod.id === item.id);
-        return result !== undefined;
-    };
 
-    const removeFromCart = (id) => {
-        const filterCart = cart.filter = (item) => {
-            return (item.id !== id)
-        }
-    };
+    const cleanCart = () => {
+        setCart([])
+        setTotalAmount(0)
+    }
 
-    const emptyCart = () => {
-        setCart([]);
-    };
 
-    const valueOfContext = {
-        cart: cart,
-        addToCart: addToCart,
-        isInCart: isInCart,
-        removeFromCart: removeFromCart,
-        emptyCart: emptyCart
+    const isInCarrito = (id) => {
+        const product = cart.find(product => product.id === id)
+        return product !== undefined
 
-    };
+    }
 
-    return (<Provider value={valueOfContext}>
-        {children}
-    </Provider>);
-} 
+    const valueCartContext = {
+        cart,
+        totalAmount,
+        totalPrice,
+        addToCart,
+        cleanCart,
+        deleteProduct
+
+    }
+
+    return (
+        <Provider value={valueCartContext}>
+            {children}
+        </Provider>
+    )
+
+}
+
+export default CustomProvider;
+

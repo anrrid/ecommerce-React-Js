@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/esm/Button";
 import ItemCount from "./ItemCount"
-import { CartContext } from "../context/CartContext"
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useContexto } from "../context/CartContext";
 
@@ -17,7 +15,7 @@ const ItemDetail = ({ item }) => {
   const [amount, setAmount] = useState(0);
 
 
-  const onAdd = (accountant) => {
+  const onAdd = (accountant, item) => {
 
     addToCart(accountant, item);
     alert('Item to cart: ' + accountant);

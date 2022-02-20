@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 import items from "./utils/utils";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = () => {
+
   const [itemList, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { itemId } = useParams();
 
   useEffect(() => {
     const promiseItems = new Promise((resolve, reject) => {
