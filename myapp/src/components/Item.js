@@ -25,7 +25,7 @@ const Item = (props) => {
 
           <Card.Text className="stockStyle">
             {" "}
-            <p>Cantidad disponible: {props.stock}</p>{" "}
+            <p>Quantity available: {props.stock}</p>{" "}
           </Card.Text>
 
           <div>
@@ -34,7 +34,7 @@ const Item = (props) => {
               to={`/detail/${props.id}`}
               className="btnStyle"
               variant="primary"
-            > <Button style={{ width: '16rem' }}>Detalle</Button>
+            > <Button style={{ width: '16rem' }}>Detail</Button>
             </Link>
           </div>
         </Card.Body>

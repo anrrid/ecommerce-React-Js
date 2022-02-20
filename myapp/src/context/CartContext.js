@@ -16,18 +16,20 @@ const CustomProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
     const addToCart = (amount, product) => {
-        console.log("soy el provider")
+        console.log(addToCart)
 
 
 
         const copyProduct = { ...product }
         copyProduct.amount = amount;
+        console.log("copyProduct", copyProduct)
 
         const copyCart = [...cart, copyProduct]
         setCart(copyCart)
+        console.log("copyCart", copyCart)
 
         const copyTotalAmount = totalAmount + amount;
-        setTotalAmount(copyTotalAmount)
+        setTotalAmount("copyTotalAmount", copyTotalAmount)
     }
 
 
@@ -44,11 +46,11 @@ const CustomProvider = ({ children }) => {
     }
 
 
-    const isInCarrito = (id) => {
-        const product = cart.find(product => product.id === id)
-        return product !== undefined
+    // const isInCarrito = (id) => {
+    //     const product = cart.find(product => product.id === id)
+    //     return product !== undefined
 
-    }
+    // }
 
     const valueCartContext = {
         cart,

@@ -31,3 +31,12 @@ const ItemListContainer = () => {
   return <>{loading ? <h1> loading... </h1> : <ItemList items={itemList} />}</>;
 };
 export default ItemListContainer;
+
+
+// if (itemId) {
+//   resolve(items.filter(itemList => itemList.category == itemId));
+//   setLoading(false);
+// } else {
+//   resolve(items)
+//   setLoading(false)
+// }

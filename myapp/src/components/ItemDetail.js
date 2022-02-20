@@ -15,7 +15,7 @@ const ItemDetail = ({ item }) => {
   const [amount, setAmount] = useState(0);
 
 
-  const onAdd = (accountant, item) => {
+  const onAdd = (accountant) => {
 
     addToCart(accountant, item);
     alert('Item to cart: ' + accountant);
@@ -38,12 +38,12 @@ const ItemDetail = ({ item }) => {
 
           <Card.Text className="stockStyle">
             {" "}
-            <p>available quantity  {10}</p>{" "}
+            <p>available quantity: {10}</p>{" "}
           </Card.Text>
           <Card.Text><p>{item.description}</p></Card.Text>
           {confirm ? <Link
             to={"/cart"}
-          > <Button style={{ width: '16rem' }}>Finish</Button>
+          > <Button style={{ width: '22rem' }}>Finish</Button>
           </Link> : <ItemCount stock={10} initial={1} onAdd={onAdd} addFail={onAddFail} />}
         </Card.Body>
       </Card>
