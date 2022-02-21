@@ -1,5 +1,13 @@
-button {
+svg {
     color: #fff;
-    background-color: #435361;
+    background-color: #212529;
     border-color: #6c757d;
+    margin: 0;
+    padding-bottom: 1px;
+}
+
+
+.cartWidgetNumber {
+    margin-left: 1rem;
+    color: #fff;
 }
