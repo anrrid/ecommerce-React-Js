@@ -29,7 +29,10 @@ const CustomProvider = ({ children }) => {
         console.log("copyCart", copyCart)
 
         const copyTotalAmount = totalAmount + amount;
-        setTotalAmount("copyTotalAmount", copyTotalAmount)
+        setTotalAmount(copyTotalAmount)
+
+        const copyTotalPrice = totalPrice + product.price * amount;
+        setTotalPrice(copyTotalPrice)
     }
 
 

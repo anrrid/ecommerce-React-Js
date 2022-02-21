@@ -17,6 +17,7 @@ const NavBar = () => {
           <Nav.Link href="/Contact" className="linkText">
             Contact
           </Nav.Link>
+          <Nav.Link to="/Cart"><CartWidget /></Nav.Link>
         </Nav>
       </Container>
     </Navbar>
