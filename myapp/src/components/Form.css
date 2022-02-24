@@ -21,3 +21,15 @@ label {
             44,
             44);
 }
+
+.btn-checkout {
+    color: white;
+    background: #0D6EFD;
+    border-color: #0D6EFD;
+    border-radius: 5px;
+    padding: 6px 12px;
+}
+
+.purchase-Info {
+    margin: 1rem;
+}

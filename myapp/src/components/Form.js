@@ -49,7 +49,7 @@ const Form = () => {
             cleanCart();
         });
 
-        console.log(idSale, "idsale");
+        console.log("Document written with ID: ", salesCollection.id);
     };
 
     return (
@@ -126,10 +126,10 @@ const Form = () => {
                             {errors?.telefono?.message}
                         </span>
                     </div>
-                    <Button style={{ margin: "1rem" }}>Checkout</Button>
+                    <button className="btn-checkout">Checkout</button>
                 </form>
             ) : (
-                <div>
+                <div className="purchase-Info">
                     <h4>Purchase information</h4>
                     <p>Sale ID: {idSale}</p>
                     <p>Name: {name}</p>
