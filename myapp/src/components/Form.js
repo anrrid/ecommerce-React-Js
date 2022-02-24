@@ -49,7 +49,7 @@ const Form = () => {
             cleanCart();
         });
 
-        console.log(idSale, name, email)
+        console.log(idSale, "idsale");
     };
 
     return (
@@ -58,13 +58,13 @@ const Form = () => {
                 <form onSubmit={handleSubmit(send)}>
                     <h4>Shipping options</h4>
                     <div className="form-group">
-                        <label htmlFor="nombre">Name</label>
+                        <label htmlFor="name">Name</label>
                         <input
                             type="text"
                             className="form-control"
-                            name="nombre"
-                            placeholder="Nombre"
-                            {...register("nombre", {
+                            name="name"
+                            placeholder="Name"
+                            {...register("name", {
                                 required: { value: true, message: "Exclusive with name" },
                                 minLength: {
                                     value: 3,
@@ -74,7 +74,7 @@ const Form = () => {
                         />
 
                         <span className="text-danger">
-                            {errors?.nombre?.message}
+                            {errors?.name?.message}
                         </span>
                     </div>
                     <div className="form-group">
