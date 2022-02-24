@@ -1,0 +1,23 @@
+form {
+    margin: 1rem;
+}
+
+.form-group {
+    width: 40%;
+}
+
+label {
+    margin: 10px 0px 10px 0px;
+    color: rgb(29, 11, 70);
+}
+
+.form-control {
+    margin: 0;
+    background-color: rgba(201, 201, 235, 0.568);
+}
+
+.text-danger {
+    color: rgb(216,
+            44,
+            44);
+}

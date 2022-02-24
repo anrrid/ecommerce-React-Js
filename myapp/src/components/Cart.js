@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import Card from 'react-bootstrap/Card'
 import Button from "react-bootstrap/Button"
 import ListGroup from 'react-bootstrap/ListGroup'
+import Form from "./Form";
 
 const Cart = () => {
     const { cart, deleteProduct, cleanCart, totalPrice } = useContexto();
@@ -11,7 +12,7 @@ const Cart = () => {
 
     return (
         <div>
-            <Card>
+            <Card style={{ margin: "1rem" }}>
                 <Card.Header>Cart</Card.Header>
                 <Card.Body>
                     {cart.length > 0 ? (
@@ -41,6 +42,9 @@ const Cart = () => {
                     }
                 </Card.Body>
             </Card>
+
+            <Form />
+
         </div>
 
 
