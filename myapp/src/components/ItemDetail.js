@@ -14,6 +14,8 @@ const ItemDetail = ({ item }) => {
   const [confirm, setConfirm] = useState(false);
   const [amount, setAmount] = useState(0);
 
+  console.log("amount", amount);
+
 
   const onAdd = (accountant) => {
 
@@ -41,6 +43,7 @@ const ItemDetail = ({ item }) => {
             <p>available quantity: {10}</p>{" "}
           </Card.Text>
           <Card.Text><p>{item.description}</p></Card.Text>
+          <Card.Text><p>Selected quantity: {amount} u.</p></Card.Text>
           {confirm ? <Link
             to={"/cart"}
           > <Button style={{ width: '22rem' }}>Finish</Button>

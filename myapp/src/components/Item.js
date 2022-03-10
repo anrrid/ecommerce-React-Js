@@ -1,18 +1,10 @@
-import React, { useState } from "react";
-import "./Item.css";
-// import ItemDetailContainer from "./ItemDetail"
 import { Link } from "react-router-dom";
-
-//CARD
+import "./Item.css";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button"
 
 const Item = (props) => {
-  const [data, setData] = useState("");
 
-  const itemToItemDetail = () => {
-    setData(props);
-  };
 
   return (
     <div className="ItemCard">

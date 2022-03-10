@@ -5,12 +5,11 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { useContexto } from "../context/CartContext"
 import "./Form.css";
-import Button from "react-bootstrap/Button"
-import Card from 'react-bootstrap/Card'
+
 
 
 const Form = () => {
-    const { cart, cleanCart, totalPrice } = useContexto();
+    const { cleanCart } = useContexto();
 
     const {
         register,
@@ -28,17 +27,16 @@ const Form = () => {
 
     const [completepurchase, setcompletepurchase] = useState(true);
 
-    const send = (data, e) => {
-        const salesCollection = collection(db, "sales");
-        addDoc(salesCollection, {
-            buyer: {
-                name: data.name,
-                email: data.email,
-                telephone: data.telephone,
-            },
-            items: cart,
+    const send = async (data) => {
+
+        const salesCollection = await addDoc(collection(db, "sales"), {
+
+            name: data.name,
+            email: data.email,
+            telephone: data.telephone,
+
             date: serverTimestamp(),
-            total: totalPrice,
+
         }).then((result) => {
             setIdSale(result.id);
             setName(data.name);
@@ -53,7 +51,7 @@ const Form = () => {
     };
 
     return (
-        <Card style={{ margin: "1rem", width: "40%" }}>
+        <div style={{ margin: "1rem", width: "40%" }}>
             {completepurchase ? (
                 <form onSubmit={handleSubmit(send)}>
                     <h4>Shipping options</h4>
@@ -123,7 +121,7 @@ const Form = () => {
                         />
 
                         <span className="text-danger text-small d-block mb-2">
-                            {errors?.telefono?.message}
+                            {errors?.telephone?.message}
                         </span>
                     </div>
                     <button className="btn-checkout">Checkout</button>
@@ -139,7 +137,7 @@ const Form = () => {
                     <p>Telephone: {phone}</p>
                 </div>
             )}
-        </Card>
+        </div>
     );
 };
 
