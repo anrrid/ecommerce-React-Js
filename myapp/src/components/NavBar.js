@@ -1,26 +1,27 @@
 import "./NavBar.css";
-import { Nav, Container, Navbar } from "react-bootstrap";
+import { NavLink } from 'react-router-dom';
 import CartWidget from "./CartWidget";
 
 const NavBar = () => {
+
+  const hamburger = () => {
+    const nav = document.getElementsByClassName('nav-link');
+    for (let i = 0; i < nav.length; i++) {
+      nav[i].classList.toggle('disappear');
+    }
+  }
+
+
   return (
-    <Navbar bg="dark" variant="dark">
-      <Container>
-        <Navbar.Brand href="/">My Store</Navbar.Brand>
-        <Nav className="Navigation" activeKey="/home">
-          <Nav.Link href="/" className="linkText">
-            Home
-          </Nav.Link>
-          <Nav.Link href="/About" className="linkText">
-            About Us
-          </Nav.Link>
-          <Nav.Link href="/Contact" className="linkText">
-            Contact
-          </Nav.Link>
-          <Nav.Link to="/Cart"><CartWidget /></Nav.Link>
-        </Nav>
-      </Container>
-    </Navbar>
+    <nav>
+      <button className="nav-button" onClick={hamburger}>Menú</button>
+      <NavLink to="/" className="nav-link disappear">My Store</NavLink>
+      <NavLink to="/products" className="nav-link disappear">Products</NavLink>
+      <NavLink to="/category/1" className="nav-link disappear">Men</NavLink>
+      <NavLink to="category/2" className="nav-link disappear">Women</NavLink>
+      <NavLink to="/cart" cltassName="nav-link disappear"><CartWidget /></NavLink>
+    </nav>
+
   );
 };
 

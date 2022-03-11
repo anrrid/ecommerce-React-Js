@@ -7,7 +7,7 @@ import { db } from "../firebase/firebaseConfig";
 
 const ItemDetailContainer = () => {
 
-    const { itemId } = useParams();
+    const { id } = useParams();
 
     const [itemdetail, setitemdetail] = useState({});
     const [loading, setLoading] = useState(true);
@@ -15,35 +15,18 @@ const ItemDetailContainer = () => {
     useEffect(() => {
 
         const productsCollection = collection(db, "products");
-        const refDoc = doc(productsCollection, itemId);
+        const refDoc = doc(productsCollection, id);
         getDoc(refDoc)
             .then((result) => {
-                setitemdetail({ id: result.itemId, ...result.data() });
+                setitemdetail({ id: result.id, ...result.data() });
                 setLoading(false);
 
             })
             .catch((error) => {
-
+                console.warn(error);
             })
-    }, [itemId])
+    }, [id])
 
-    // const getDetails = () => {
-    //     const promiseItems = new Promise((resolve, reject) => {
-    //         setTimeout(() => {
-    //             console.log(itemId)
-    //             resolve(items.find((item) => item.id === Number(itemId)));
-    //             setLoading(false);
-    //         }, 2000);
-    //     })
-    //     promiseItems.then((item) => {
-    //         console.log(item);
-    //         setitemdetail(item);
-    //     });
-    // }
-
-    // useEffect(() => {
-    //     getDetails()
-    // }, [itemId])
 
     return (
         <>

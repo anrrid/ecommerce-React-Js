@@ -20,7 +20,6 @@ const ItemDetail = ({ item }) => {
   const onAdd = (accountant) => {
 
     addToCart(accountant, item);
-    alert('Item to cart: ' + accountant);
     setAmount(accountant)
     setConfirm(true);
   };
