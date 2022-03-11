@@ -17,16 +17,22 @@ const CustomProvider = ({ children }) => {
 
     const addToCart = (amount, product) => {
         console.log(addToCart)
+        const id = product.id;
 
+        if (isInCart(id)) {
+            const copyCart = [...cart];
+            let match = copyCart.find((item) => item.id === id);
+            match.amount += amount;
+            setCart(copyCart)
+        } else {
+            const copyProduct = { ...product }
+            copyProduct.amount = amount;
+            console.log("copyProduct", copyProduct)
 
-
-        const copyProduct = { ...product }
-        copyProduct.amount = amount;
-        console.log("copyProduct", copyProduct)
-
-        const copyCart = [...cart, copyProduct]
-        setCart(copyCart)
-        console.log("copyCart", copyCart)
+            const copyCart = [...cart, copyProduct]
+            setCart(copyCart)
+            console.log("copyCart", copyCart)
+        }
 
         const copyTotalAmount = totalAmount + amount;
         setTotalAmount(copyTotalAmount)
@@ -36,11 +42,13 @@ const CustomProvider = ({ children }) => {
     }
 
 
-    const deleteProduct = (id) => {
-        const copyCart = cart.filter(product => product.id !== id)
-        setCart(copyCart)
+    const deleteProduct = (id, amount) => {
+        const copyCart = cart.filter((product) => product.id !== id)
+        setCart(copyCart);
+        setTotalAmount(totalAmount - amount);
+        setTotalPrice(totalPrice - amount * cart.find((product) => product.id === id).price);
 
-    }
+    };
 
 
     const cleanCart = () => {
@@ -49,11 +57,10 @@ const CustomProvider = ({ children }) => {
     }
 
 
-    // const isInCarrito = (id) => {
-    //     const product = cart.find(product => product.id === id)
-    //     return product !== undefined
-
-    // }
+    const isInCart = (id) => {
+        const producto = cart.find((producto) => producto.id === id);
+        return producto !== undefined;
+    };
 
     const valueCartContext = {
         cart,
